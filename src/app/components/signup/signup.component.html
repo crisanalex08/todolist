@@ -1,0 +1,35 @@
+<mat-toolbar>
+  <mat-icon> menu </mat-icon>
+</mat-toolbar>
+
+<div class="signup-container">
+  <h1>Sign Up</h1>
+
+  <button
+    mat-button
+    class="signup-button"
+    (click)="signUpWithGoogle()"
+  >
+  <mat-icon svgIcon="google-logo"></mat-icon>
+    Sign Up with Google
+  </button>
+
+  <button
+    mat-button
+    class="signup-button"
+    (click)="signUpWithFacebook()"
+  >
+  <mat-icon svgIcon="facebook-logo"></mat-icon>
+
+    Sign Up with Facebook
+  </button>
+
+  <button
+    mat-button
+    class="signup-button"
+    (click)="signUpWithTwitter()"
+  >
+    <mat-icon svgIcon="twitter-logo"></mat-icon>
+    Sign Up with Twitter
+  </button>
+</div>

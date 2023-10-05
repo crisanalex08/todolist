@@ -1,0 +1,39 @@
+<p>
+  <mat-toolbar class="fullsize-toolbar" *ngIf="!miniNav">
+    <span>todolist</span>
+    <span class="spacer"></span>
+    <button mat-button class="landing-toolbar-button">Features</button>
+    <button mat-button class="landing-toolbar-button">Templates</button>
+    <button mat-button class="landing-toolbar-button">Resources</button>
+    <button mat-button class="landing-toolbar-button">Pricing</button>
+    <button mat-button class="landing-toolbar-button">Login</button>
+    <button mat-raised-button color="primary" (click)="handleGetStarted()">Get Started</button>
+  </mat-toolbar>
+
+  <mat-toolbar class="fullsize-toolbar" *ngIf="miniNav">
+    <span>todolist</span>
+    <span class="spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-button class="landing-toolbar-button">Features</button>
+      <button mat-button class="landing-toolbar-button">Templates</button>
+      <button mat-button class="landing-toolbar-button">Resources</button>
+      <button mat-button class="landing-toolbar-button">Pricing</button>
+      <button mat-button class="landing-toolbar-button">Login</button>
+    </mat-menu>
+  </mat-toolbar>
+</p>
+<body>
+  <div class="landing-container">
+    <div class="landing-content">
+      <h1>Get more done with todolist</h1>
+      <p>Organize your life, your way, with todolist</p>
+      <button mat-raised-button color="primary" (click)="handleGetStarted()">Get Started</button>
+    </div>
+    <div class="landing-image">
+      <img src="assets/images/5399986.jpg" alt="landing-image" />
+    </div>
+  </div>
+</body>
