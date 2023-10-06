@@ -20,6 +20,9 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { SecureComponent } from './components/secure/secure.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AuthConfigModule } from './auth/auth-config.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { SignupComponent } from './components/signup/signup.component';
     LandingComponent,
     LoginComponent,
     SignupComponent,
+    SecureComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,8 @@ import { SignupComponent } from './components/signup/signup.component';
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AuthConfigModule
   ],
   providers: [],
   bootstrap: [AppComponent],
