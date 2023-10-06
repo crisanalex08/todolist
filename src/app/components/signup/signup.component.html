@@ -1,35 +1,63 @@
 <mat-toolbar>
   <mat-icon> menu </mat-icon>
 </mat-toolbar>
+<div style="display: inline-flex;">
+  <div class="signup-container">
+    <h1>Sign up</h1>
 
-<div class="signup-container">
-  <h1>Sign Up</h1>
+    <button mat-button class="signup-button" (click)="signUpWithGoogle()" *ngIf="!signupUsingEmail">
+      <mat-icon svgIcon="google-logo"></mat-icon>
+      Sign up with Google
+    </button>
 
-  <button
-    mat-button
-    class="signup-button"
-    (click)="signUpWithGoogle()"
-  >
-  <mat-icon svgIcon="google-logo"></mat-icon>
-    Sign Up with Google
-  </button>
+    <button mat-button class="signup-button" (click)="signUpWithFacebook()" *ngIf="!signupUsingEmail">
+      <mat-icon svgIcon="facebook-logo"></mat-icon>
 
-  <button
-    mat-button
-    class="signup-button"
-    (click)="signUpWithFacebook()"
-  >
-  <mat-icon svgIcon="facebook-logo"></mat-icon>
+      Sign up with Facebook
+    </button>
 
-    Sign Up with Facebook
-  </button>
+    <button mat-button class="signup-button" (click)="signUpWithTwitter()" *ngIf="!signupUsingEmail">
+      <mat-icon svgIcon="twitter-logo"></mat-icon>
+      Sign up with Twitter
+    </button>
 
-  <button
-    mat-button
-    class="signup-button"
-    (click)="signUpWithTwitter()"
-  >
-    <mat-icon svgIcon="twitter-logo"></mat-icon>
-    Sign Up with Twitter
-  </button>
+    <button mat-button class="signup-button" id="sigupWithEmail" (click)="signUpWithEmail()">
+      Sign up with email
+    </button>
+
+    <div class="input-container" *ngIf="signupUsingEmail">
+      <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" style="width: 30em; height: 3em; border-radius: 10px;"
+        (click)="signUp()">
+        Sign up
+      </button>
+    </div>
+    <div class="footer1">
+      <p>By continuing with Google, Twitter, Facebook or Email, you agree to Todolist's
+        <a href="https://raw.githubusercontent.com/crisanalex08/todolist/main/README.md">Terms of Service</a>
+        and
+        <a href="https://raw.githubusercontent.com/crisanalex08/todolist/main/README.md">Privacy Policy</a>
+      </p>
+    </div>
+
+    <div style="margin-top: 8em;">
+      <p>
+        Already have an acount? Go to <a href="../auth/login">login</a>.
+      </p>
+    </div>
+  </div>
+  <img src="http://localhost:4200/assets/images/signup-background-image.jpg" class="signup-image">
 </div>

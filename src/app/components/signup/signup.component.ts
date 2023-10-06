@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
+import { MatInput } from '@angular/material/input';
 import { DomSanitizer } from '@angular/platform-browser';
 
 const googleLogoURL ="http://localhost:4200/assets/images/svg/google.svg";
@@ -21,6 +23,19 @@ constructor(
   this.matIconRegistry.addSvgIcon("twitter-logo", this.domSanitizer.bypassSecurityTrustResourceUrl(twitterLogoURL));
  }
 
+
+ email = new FormControl('', [Validators.required, Validators.email]);
+ signupUsingEmail : boolean = false;
+ hide: boolean = true;
+
+ getErrorMessage() {
+   if (this.email.hasError('required')) {
+     return 'You must enter a value';
+   }
+
+   return this.email.hasError('email') ? 'Not a valid email' : '';
+ }
+
   signUpWithGoogle(){
     console.log("Signup with google");
   }
@@ -31,5 +46,13 @@ constructor(
 
   signUpWithTwitter(){
     console.log("Signup with email");
+  }
+
+  signUpWithEmail(){
+    this.signupUsingEmail = true;
+  }
+
+  signUp(){
+
   }
 }

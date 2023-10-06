@@ -1,1 +1,60 @@
-<p>login works!</p>
+<mat-toolbar>
+  <mat-icon> menu </mat-icon>
+</mat-toolbar>
+
+<div class="login-container">
+  <h1>Log in</h1>
+
+  <button mat-button class="login-button" (click)="loginWithGoogle()" *ngIf="!loginUsingEmail">
+    <mat-icon svgIcon="google-logo"></mat-icon>
+    Log in with Google
+  </button>
+
+  <button mat-button class="login-button" (click)="loginWithFacebook()" *ngIf="!loginUsingEmail">
+    <mat-icon svgIcon="facebook-logo"></mat-icon>
+
+    log in with Facebook
+  </button>
+
+  <button mat-button class="login-button" (click)="loginWithTwitter()" *ngIf="!loginUsingEmail">
+    <mat-icon svgIcon="twitter-logo"></mat-icon>
+    Log in with Twitter
+  </button>
+
+  <button mat-button class="login-button" id="sigupWithEmail" (click)="loginWithEmail()">
+    Log In with email
+  </button>
+
+  <div class="input-container" *ngIf="loginUsingEmail">
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" style="width: 30em; height: 3em; border-radius: 10px;" (click)="login()">
+      Log in
+    </button>
+  </div>
+  <div class="footer1">
+    <p>By continuing with Google, Twitter, Facebook or Email, you agree to Todolist's
+      <a href="https://raw.githubusercontent.com/crisanalex08/todolist/main/README.md">Terms of Service</a>
+      and
+      <a href="https://raw.githubusercontent.com/crisanalex08/todolist/main/README.md">Privacy Policy</a></p>
+  </div>
+
+  <div style="margin-top: 8em;">
+    <p>
+      Don't have an acount? Go to <a href="../auth/signup">Sign up</a>.
+    </p>
+  </div>
+
+</div>

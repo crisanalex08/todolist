@@ -1,24 +1,23 @@
 .signup-container {
   margin-bottom: 50px;
   display: grid;
-  padding: 60px;
-}
-
-h1 {
-  margin-left: 5em;
-  margin-bottom: 1em;
+  padding-top: 5em;
+  padding-left: 15em;
+  height: auto;
+  max-height: 500px;
+  transition: height 1s ease-out;
 }
 
 .signup-button {
     margin-top: 1em;
-    margin-left: 5em;
     margin-bottom: 1em;
     display: inline-flex;
-    width: 50em;
+    width: 30em;
     height: 3em;
     color: rgb(0, 0, 0);
     font-weight: 700;
-    border: none;
+    background-color: #fdfdfd;
+    border: solid rgb(146, 146, 146) 2px;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -28,16 +27,46 @@ h1 {
     height: 5em;
 }
 
+p{
+  font-size: small;
+  padding-left: 0.5em;
+}
+
+.footer1{
+  width: 26em;
+}
+
 .signup-button:hover {
-    margin-top: 1em;
-    margin-left: 5em;
-    margin-bottom: 1em;
-    width: 50em;
-    height: 3em;
-    background-color: #f0f0f0;
+    background-color: #fafafa;
     color: rgb(0, 0, 0);
-    font-weight: 700;
-    border: none;
     border-radius: 10px;
     cursor: pointer;
+}
+
+mat-toolbar{
+  background-color: #ffffff;
+}
+
+mat-form-field{
+  width: 26em;
+}
+
+#sigupWithEmail{
+  transition-duration: 2s;
+}
+
+.input-container {
+  border: solid black 3px;
+
+ display: contents;
+}
+
+.container{
+  display: flex;
+}
+
+.signup-image{
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0,0,0,0.5)), url("http://localhost:4200/assets/images/signup-background-image.jpg");
+  width: 20em;
+  height: 20em;
 }
