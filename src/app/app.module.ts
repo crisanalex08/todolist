@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 //components
 import { AppComponent } from './app.component';
@@ -42,12 +43,13 @@ import { AuthConfigModule } from './auth/auth-config.module';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AuthConfigModule
+    AuthConfigModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

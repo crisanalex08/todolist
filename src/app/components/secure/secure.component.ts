@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class SecureComponent {
 
+navBar: boolean = false;
+  constructor() { }
+
+  ngOnInit(): void {
+    this.navBar = false;
+  }
+
+  navBarToggle(){
+    this.navBar = !this.navBar;
+  }
+
 }

@@ -1,1 +1,16 @@
-<p>secure works!</p>
+<mat-drawer-container>
+<mat-drawer #drawer [(opened)]="navBar">
+   
+</mat-drawer>
+<mat-drawer-content>
+    <mat-toolbar color="primary">
+        <button mat-icon-button (click)="navBarToggle()">
+          <mat-icon *ngIf="navBar">close</mat-icon>
+          <mat-icon *ngIf="!navBar">menu</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>home</mat-icon>
+        </button>
+      </mat-toolbar>
+</mat-drawer-content>
+</mat-drawer-container>
