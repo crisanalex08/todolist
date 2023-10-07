@@ -2,3 +2,40 @@ mat-toolbar{
     margin: 0px;
     width: 100%;
 }
+
+.secure-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    position: fixed;
+}
+
+.demo-comp{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    border: 1px solid black;
+}
+
+mat-list{
+    justify-self: left;
+    padding-left: 0;
+}
+
+mat-list-item{
+    cursor: pointer;
+    justify-content: left;
+}
+
+.bottom-button{
+    bottom: 0;
+    display: flex;
+}
+
+.bottom-item{
+    margin-top: calc(100vh - 500px)
+}
+
+mat-drawer-container { flex: 1 1 auto; }

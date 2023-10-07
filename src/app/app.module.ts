@@ -14,6 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 //components
 import { AppComponent } from './app.component';
@@ -24,6 +25,13 @@ import { SignupComponent } from './components/signup/signup.component';
 import { SecureComponent } from './components/secure/secure.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthConfigModule } from './auth/auth-config.module';
+import { InboxComponent } from './components/inbox/inbox.component';
+import { TodayComponent } from './components/today/today.component';
+import { UpcomingComponent } from './components/upcoming/upcoming.component';
+import { ProjectComponent } from './components/project/project.component';
+import { TaskComponent } from './components/task/task.component';
+import { TaskDetailsComponent } from './components/task-details/task-details.component';
+import { TaskItemComponent } from './components/task-item/task-item.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +42,13 @@ import { AuthConfigModule } from './auth/auth-config.module';
     SignupComponent,
     SecureComponent,
     NotFoundComponent,
+    InboxComponent,
+    TodayComponent,
+    UpcomingComponent,
+    ProjectComponent,
+    TaskComponent,
+    TaskDetailsComponent,
+    TaskItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +60,7 @@ import { AuthConfigModule } from './auth/auth-config.module';
     MatMenuModule,
     MatSidenavModule,
     MatFormFieldModule,
+    MatListModule,
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
