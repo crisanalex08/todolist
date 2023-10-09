@@ -9,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ITaskStorageService, TaskStorageService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddCors(o =>
 {
   o.AddPolicy("AllowAll", p =>

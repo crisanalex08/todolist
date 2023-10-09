@@ -13,6 +13,7 @@ export class InboxComponent {
   constructor(private tasksService: TasksService) { }
   
   ngOnInit(): void {
+    console.log('ngOnInit - inbox');
     this.tasksService.getTasks(5).subscribe((tasks) => {
       this.tasks = tasks;
       console.log(this.tasks);

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Data;
 using WebApplication1.Services;
 
 namespace WebApplication1.Controllers
@@ -18,12 +19,12 @@ namespace WebApplication1.Controllers
 
     private void InitialTask()
     {
-      using var db = new TaskContext();
+      using var db = new TodolistContext();
 
       Console.WriteLine($"Database path: {db.DbPath}");
     }
 
-
+    
     [HttpGet("{take}")]
     public IEnumerable<ToDoTask> Get(int take)
     {

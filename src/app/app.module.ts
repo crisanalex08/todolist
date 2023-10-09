@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { AuthModule } from '@auth0/auth0-angular';
 
 //components
 import { AppComponent } from './app.component';
@@ -66,6 +67,13 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
     ReactiveFormsModule,
     FormsModule,
     AuthConfigModule,
+    AuthModule.forRoot({
+      domain: 'dev-rkarlbjvzmn4thqm.us.auth0.com',
+      clientId: 'l0QaRy49BZZUuz2ty4XbCcyRCQjYqFsp',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
