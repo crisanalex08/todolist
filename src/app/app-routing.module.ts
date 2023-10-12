@@ -21,7 +21,8 @@ const routes: Routes = [
     ],
   },
   { path: 'auth/login', component: LoginComponent },
-  { path: '', component: NotFoundComponent },
+  { path: '', component: LandingComponent },
+  { path: '**', component: LandingComponent }
 ];
 
 @NgModule({

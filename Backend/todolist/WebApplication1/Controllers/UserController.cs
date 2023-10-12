@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
       _logger = logger;
     }
 
-    [HttpGet("user/register{name}, {email}, {pass}")]
+    [HttpGet("/register{name}/{email}/{pass}")]
     public Guid RegisterUser(string name, string email, string pass)
     {
       try
@@ -31,7 +31,7 @@ namespace WebApplication1.Controllers
       }
     }
 
-    [HttpGet("user/validate{email}, {pass}")]
+    [HttpGet("/validate{email}/{pass}")]
     public Guid ValidateUser(string name, string email, string pass)
     {
       try

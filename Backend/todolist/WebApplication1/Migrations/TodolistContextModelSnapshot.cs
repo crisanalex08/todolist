@@ -88,13 +88,11 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("WebApplication1.Data.ToDoTask", b =>
                 {
-                    b.HasOne("WebApplication1.Data.User", "User")
+                    b.HasOne("WebApplication1.Data.User", null)
                         .WithMany("Tasks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebApplication1.Data.User", b =>

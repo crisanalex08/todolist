@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Data
 {
@@ -49,6 +50,7 @@ namespace WebApplication1.Data
     public TaskStatus Status { get; set; }
     public int Priority { get; set; }
     public bool IsDeleted { get; set; }
-    public User User { get; set; }
+    [ForeignKey(nameof(User))]
+    public virtual Guid UserId { get; set; }
   }
 }

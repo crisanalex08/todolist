@@ -11,7 +11,7 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(TodolistContext))]
-    [Migration("20231009180929_InitialCreate")]
+    [Migration("20231011122734_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -91,13 +91,11 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("WebApplication1.Data.ToDoTask", b =>
                 {
-                    b.HasOne("WebApplication1.Data.User", "User")
+                    b.HasOne("WebApplication1.Data.User", null)
                         .WithMany("Tasks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebApplication1.Data.User", b =>

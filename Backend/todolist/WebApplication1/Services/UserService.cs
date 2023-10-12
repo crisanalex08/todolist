@@ -55,7 +55,7 @@ namespace WebApplication1.Services
       {
         if (user.Password == getHashedPass(user.Salt + password))
         {
-          return Guid.NewGuid();
+          return user.Id;
         }
         else
         {

@@ -25,16 +25,16 @@ namespace WebApplication1.Controllers
     }
 
     
-    [HttpGet("{take}")]
+    [HttpGet("{userId}/{take}")]
     public IEnumerable<ToDoTask> Get(int take)
     {
       return taskService.GetTasks(take);
     }
 
-    [HttpPost(Name = "AddTask")]
-    public async Task Post(ToDoTask task)
+    [HttpPost("add")]
+    public async Task Post(Guid userId,ToDoTask task)
     {
-      await taskService.Add(task); 
+      await taskService.Add(userId, task); 
     }
   }
 }

@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@angular/animations':
     specifier: ^16.2.0
@@ -43,6 +47,9 @@ dependencies:
   angular-auth-oidc-client:
     specifier: 16.0.1
     version: 16.0.1(@angular/common@16.2.0)(@angular/core@16.2.0)(@angular/router@16.2.0)(rxjs@7.8.0)
+  angularx-social-login:
+    specifier: ^4.1.0
+    version: 4.1.0(@angular/common@16.2.0)(@angular/core@16.2.0)
   rxjs:
     specifier: ~7.8.0
     version: 7.8.0
@@ -3398,6 +3405,18 @@ packages:
       '@angular/router': 16.2.0(@angular/common@16.2.0)(@angular/core@16.2.0)(@angular/platform-browser@16.2.0)(rxjs@7.8.0)
       rfc4648: 1.5.2
       rxjs: 7.8.0
+      tslib: 2.6.1
+    dev: false
+
+  /angularx-social-login@4.1.0(@angular/common@16.2.0)(@angular/core@16.2.0):
+    resolution: {integrity: sha512-nSYLvGhI7MZtN/RxRie5GEl/rytIJPRPeSQSgiXbDESJC9zjuik629kqMCPnLCRk5SfTBrXSNcpZ8X/5kgsDKg==}
+    deprecated: This package has been moved to @abacritt/angularx-social-login
+    peerDependencies:
+      '@angular/common': ^12.0.0
+      '@angular/core': ^12.0.0
+    dependencies:
+      '@angular/common': 16.2.0(@angular/core@16.2.0)(rxjs@7.8.0)
+      '@angular/core': 16.2.0(rxjs@7.8.0)(zone.js@0.13.0)
       tslib: 2.6.1
     dev: false
 
@@ -8066,7 +8085,3 @@ packages:
     resolution: {integrity: sha512-7m3hNNyswsdoDobCkYNAy5WiUulkMd3+fWaGT9ij6iq3Zr/IwJo4RMCYPSDjT+r7tnPErmY9sZpKhWQ8S5k6XQ==}
     dependencies:
       tslib: 2.3.0
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

@@ -33,6 +33,7 @@ import { ProjectComponent } from './components/project/project.component';
 import { TaskComponent } from './components/task/task.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
+import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SocialLoginModule,
     FormsModule,
     AuthConfigModule,
     AuthModule.forRoot({
@@ -75,7 +77,19 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
       }
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('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')
+          }]
+      }
+    }
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

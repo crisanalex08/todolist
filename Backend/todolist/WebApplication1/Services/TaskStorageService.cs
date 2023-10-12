@@ -9,12 +9,11 @@ namespace WebApplication1.Services
   public class TaskStorageService:ITaskStorageService
   {
 
-    public async Task Add(ToDoTask task)
+    public async Task Add(Guid userId, ToDoTask task)
     {
       using var db = new TodolistContext();
+      var user = db.Users.Where(u => u.Id == userId);
 
-      db.Add(task);
-      await db.SaveChangesAsync();
     }
 
     public IEnumerable<ToDoTask> GetTasks(int take)
@@ -28,6 +27,6 @@ namespace WebApplication1.Services
   public interface ITaskStorageService
   {
     IEnumerable<ToDoTask> GetTasks(int take);
-    Task Add(ToDoTask task);
+    Task Add(Guid userId, ToDoTask task);
   }
 }
