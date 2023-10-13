@@ -1,27 +1,30 @@
 # Todolist
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
 
-## Development server
+This is a task management app designed for everyone: students, employes or a parent that just to have his daily chores.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Project description: I chosed to create this project because I wanted to be more organised and maybe to help others too.
 
-## Code scaffolding
+Before login:
+    You cand access the landing page of the site. By pressing the 'Get Started' button you will be prompted with 3 pricing tears. Initialy the app will be free but in the future we will have some 'pro' features like schechuled emails to remind you of your deadlines.
+    <br>
+    
+    There are 2 roles, and admin and a user.
+    
+    - crete an account
+    - login / social login
+    - logut
+    - CRUD tasks
+    - create projects
+<br>
+    The admin will be able to: 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- crete an account
+- login
+- delete users
+- delete tasks
+- delete projects
+        
+# Technologies
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    This app was developed using Angular16 for frontend and .Net for the backend.

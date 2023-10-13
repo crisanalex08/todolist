@@ -7,14 +7,14 @@ import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { AuthService } from 'src/app/services/auth.service';
 
-const googleLogoURL = "http://localhost:4200/assets/images/svg/google.svg";
-const facebookLogoURL = "http://localhost:4200/assets/images/svg/facebook.svg";
-const twitterLogoURL = "http://localhost:4200/assets/images/svg/twitter.svg";
+const googleLogoURL = 'http://localhost:4200/assets/images/svg/google.svg';
+const facebookLogoURL = 'http://localhost:4200/assets/images/svg/facebook.svg';
+const twitterLogoURL = 'http://localhost:4200/assets/images/svg/twitter.svg';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
   constructor(
@@ -24,9 +24,18 @@ export class SignupComponent {
     private socialAuthService: SocialAuthService,
     private router: Router
   ) {
-    this.matIconRegistry.addSvgIcon("google-logo", this.domSanitizer.bypassSecurityTrustResourceUrl(googleLogoURL));
-    this.matIconRegistry.addSvgIcon("facebook-logo", this.domSanitizer.bypassSecurityTrustResourceUrl(facebookLogoURL));
-    this.matIconRegistry.addSvgIcon("twitter-logo", this.domSanitizer.bypassSecurityTrustResourceUrl(twitterLogoURL));
+    this.matIconRegistry.addSvgIcon(
+      'google-logo',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(googleLogoURL)
+    );
+    this.matIconRegistry.addSvgIcon(
+      'facebook-logo',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(facebookLogoURL)
+    );
+    this.matIconRegistry.addSvgIcon(
+      'twitter-logo',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(twitterLogoURL)
+    );
   }
 
   name = new FormControl('', [Validators.required]);
@@ -48,16 +57,17 @@ export class SignupComponent {
   }
 
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+    this.socialAuthService
+      .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then(() => this.router.navigate(['mainpage']));
   }
 
   signUpWithFacebook() {
-    console.log("Signup with facebook");
+    console.log('Signup with facebook');
   }
 
   signUpWithTwitter() {
-    console.log("Signup with email");
+    console.log('Signup with email');
   }
 
   signUpWithEmail() {
@@ -65,7 +75,19 @@ export class SignupComponent {
   }
 
   signUp() {
-    this.authService.registerUser(this.name.getRawValue(), this.email.getRawValue(), this.password.getRawValue())
-    .then(() => this.router.navigate(['secure/inbox']));
+    this.authService
+      .registerUser(
+        this.name.getRawValue(),
+        this.email.getRawValue(),
+        this.password.getRawValue()
+      )
+      .then(() => {
+        console.log('userId', localStorage.getItem('userId'));
+        if(localStorage.getItem('userId') != '')
+          this.router.navigate(['secure/inbox']);
+        else{
+          this.router.navigate(['auth/signup']);
+        }
+      });
   }
 }
