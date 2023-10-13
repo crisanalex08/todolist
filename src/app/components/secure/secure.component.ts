@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+const baseUrl = 'http://localhost:4200';
 
 @Component({
   selector: 'app-secure',
@@ -8,7 +11,7 @@ import { Component } from '@angular/core';
 export class SecureComponent {
 
 navBar: boolean = false;
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     this.navBar = false;
@@ -18,4 +21,7 @@ navBar: boolean = false;
     this.navBar = !this.navBar;
   }
 
+  onInbox(){
+    this.router.navigateByUrl(`/secure/inbox`);
+  }
 }

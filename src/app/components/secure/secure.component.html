@@ -1,16 +1,67 @@
-<mat-drawer-container>
-<mat-drawer #drawer [(opened)]="navBar">
-   
-</mat-drawer>
-<mat-drawer-content>
-    <mat-toolbar color="primary">
-        <button mat-icon-button (click)="navBarToggle()">
-          <mat-icon *ngIf="navBar">close</mat-icon>
-          <mat-icon *ngIf="!navBar">menu</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>home</mat-icon>
-        </button>
-      </mat-toolbar>
-</mat-drawer-content>
-</mat-drawer-container>
+<div class="secure-container">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="navBarToggle()">
+      <mat-icon *ngIf="navBar">close</mat-icon>
+      <mat-icon *ngIf="!navBar">menu</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-drawer-container>
+    <mat-drawer #drawer [(opened)]="navBar" mode="side">
+      <mat-list>
+        <mat-list-item>
+          <button mat-button (click)="onInbox()">
+            <mat-icon>inbox</mat-icon>
+            Inbox
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button>
+            <mat-icon>calendar_today</mat-icon>
+            Today
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button>
+            <mat-icon>calendar_month</mat-icon>
+            Upcoming
+          </button>
+        </mat-list-item>
+      </mat-list>
+      <mat-list [title]="'Projects'">
+        <mat-list-item>
+          <h3>Projects</h3>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button>
+            <mat-icon>assignment</mat-icon>
+            Work
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button>
+            <mat-icon>book</mat-icon>
+            Education
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button>
+            <mat-icon>home</mat-icon>
+            Home
+          </button>
+        </mat-list-item>
+        <mat-list-item class="bottom-item">
+          <button mat-button class="bottom-button">
+            <mat-icon>add</mat-icon>
+            Add new project
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

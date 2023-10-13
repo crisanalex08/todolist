@@ -1,0 +1,24 @@
+<div class="inbox-container">
+  <mat-toolbar>
+    <h2>Inbox</h2>
+    <span class="spacer"></span>
+    <button mat-button>
+      <mat-icon>settings_input_component</mat-icon>
+      View
+    </button>
+    <button mat-button>
+      <mat-icon>comment</mat-icon>
+      Comments
+    </button>
+    <button mat-icon-button>
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
+
+  <button mat-raised-button color="primary" class="add-task-button" (click)="openNewTaskDialog()">
+    <mat-icon>add</mat-icon>
+    Add a new task
+  </button>
+</div>

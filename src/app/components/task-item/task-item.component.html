@@ -1,0 +1,10 @@
+<div class="task-item-container">
+  <mat-toolbar>
+    <h3>{{ task.title }}</h3>
+    <span class="spacer"></span>
+    <mat-icon class="task-icon" (click)="deleteTask()">delete_outline</mat-icon>
+    <mat-icon class="task-icon" (click)="editTask()">more_horiz</mat-icon>
+  </mat-toolbar>
+  <p>{{ task.description }}</p>
+  <mat-icon id="task-flag">assignment</mat-icon>
+</div>

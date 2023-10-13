@@ -7,7 +7,9 @@
     <button mat-button class="landing-toolbar-button">Resources</button>
     <button mat-button class="landing-toolbar-button">Pricing</button>
     <button mat-button class="landing-toolbar-button">Login</button>
-    <button mat-raised-button color="primary" (click)="handleGetStarted()">Get Started</button>
+    <button mat-raised-button color="primary" (click)="handleGetStarted()">
+      Get Started
+    </button>
   </mat-toolbar>
 
   <mat-toolbar class="fullsize-toolbar" *ngIf="miniNav">
@@ -25,15 +27,15 @@
     </mat-menu>
   </mat-toolbar>
 </p>
-<body>
-  <div class="landing-container">
-    <div class="landing-content">
-      <h1>Get more done with todolist</h1>
-      <p>Organize your life, your way, with todolist</p>
-      <button mat-raised-button color="primary" (click)="handleGetStarted()">Get Started</button>
-    </div>
-    <div class="landing-image">
-      <img src="assets/images/5399986.jpg" alt="landing-image" />
-    </div>
+<div class="landing-container">
+  <div class="landing-content">
+    <h1>Get more done with todolist</h1>
+    <p>Organize your life, your way, with todolist</p>
+    <button mat-raised-button color="primary" (click)="handleGetStarted()">
+      Get Started
+    </button>
   </div>
-</body>
+  <div class="landing-image">
+    <img src="assets/images/5399986.jpg" alt="landing-image" />
+  </div>
+</div>
