@@ -31,8 +31,8 @@ namespace WebApplication1.Controllers
       return taskService.GetTasks(userId, take);
     }
 
-    [HttpPost("add")]
-    public async Task Post(Guid userId,ToDoTask task)
+    [HttpPost("add_task/{userId}")]
+    public async Task Post(Guid userId,[FromBody]ToDoTask task)
     {
       await taskService.Add(userId, task); 
     }

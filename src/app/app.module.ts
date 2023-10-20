@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
+import {DragDropModule} from '@angular/cdk/drag-drop'
 
 //components
 import { AppComponent } from './app.component';
@@ -78,6 +79,7 @@ import { NewTaskDialogComponent } from './components/new-task-dialog/new-task-di
     HttpClientModule,
     ReactiveFormsModule,
     SocialLoginModule,
+    DragDropModule,
     FormsModule,
     AuthConfigModule,
     AuthModule.forRoot({

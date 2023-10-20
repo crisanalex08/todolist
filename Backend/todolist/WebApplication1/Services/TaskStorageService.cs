@@ -6,7 +6,7 @@ namespace WebApplication1.Services
   public class TaskStorageService : ITaskStorageService
   {
 
-    public async Task Add(Guid userId, ToDoTaskEntity task)
+    public async Task Add(Guid userId, ToDoTask task)
     {
       using var db = new TodolistContext();
       var user = db.Users.Include(u => u.Tasks).FirstOrDefault(user => user.Id == userId);
@@ -22,7 +22,7 @@ namespace WebApplication1.Services
       }
     }
 
-    public IEnumerable<ToDoTaskEntity> GetTasks(Guid userId, int take)
+    public IEnumerable<ToDoTask> GetTasks(Guid userId, int take)
     {
       using var db = new TodolistContext();
       var user = db.Users.Include(u => u.Tasks).FirstOrDefault(user => user.Id == userId);
@@ -30,12 +30,12 @@ namespace WebApplication1.Services
       if (user != null)
       {
         // Retrieve tasks for the user and limit the results to 'take' items
-        var userTasks = user.Tasks.Take(take);
+        var userTasks = user.Tasks.Take(take).Where(t => t.UserId == userId);
         return userTasks;
       }
       else
       {
-        return new List<ToDoTaskEntity>();
+        return new List<ToDoTask>();
       }
     }
 
@@ -45,7 +45,7 @@ namespace WebApplication1.Services
       {
         using var db = new TodolistContext();
 
-        var task = db.Tasks.FirstOrDefault(t => t.Id == taskId).Where(t => t.UserId == userId);
+        var task = db.Tasks.FirstOrDefault(t => t.Id == taskId);
 
         if (task != null)
         {
@@ -63,7 +63,7 @@ namespace WebApplication1.Services
 
   public interface ITaskStorageService
   {
-    IEnumerable<ToDoTaskEntity> GetTasks(Guid userId, int take);
+    IEnumerable<ToDoTask> GetTasks(Guid userId, int take);
     Task Add(Guid userId, ToDoTask task);
     Task Delete(Guid taskId);
   }

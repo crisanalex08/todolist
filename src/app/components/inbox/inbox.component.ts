@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TodoTask } from 'src/app/Interfaces/todoTask';
-import { TasksService } from 'src/app/services/tasks.service';
+import { TasksService, dev } from 'src/app/services/tasks.service';
 import { NewTaskDialogComponent } from '../new-task-dialog/new-task-dialog.component';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-inbox',
@@ -11,14 +12,21 @@ import { NewTaskDialogComponent } from '../new-task-dialog/new-task-dialog.compo
 })
 export class InboxComponent {
   tasks: TodoTask[] = [];
-  constructor(private dialog: MatDialog, private tasksService: TasksService) {}
+  constructor(private dialog: MatDialog, private tasksService: TasksService) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit - inbox');
-    this.tasksService.getTasks(2).subscribe((tasks) => {
-      this.tasks = tasks;
-      console.log(this.tasks);
-    });
+    if (dev) {
+      this.tasksService.taskList = this.tasksService.getMockTasks(5);
+    } else {
+      console.log('ngOnInit - inbox');
+      this.tasksService.getTasks(2).subscribe((tasks: any) => {
+        this.tasksService.taskList = tasks;
+        console.log(this.tasks);
+      });
+    }
+
+    this.tasksService.taskSubject.next(this.tasksService.taskList);
+    this.tasks = this.tasksService.taskList;
   }
 
   openNewTaskDialog(): void {
@@ -45,10 +53,14 @@ export class InboxComponent {
             result.dueDate,
             result.priority
           )
-          .subscribe((task : any) => {
+          .subscribe((task: any) => {
             this.tasks.push(task);
           });
       }
     });
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
   }
 }

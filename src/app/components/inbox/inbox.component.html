@@ -15,8 +15,9 @@
     </button>
   </mat-toolbar>
 
-  <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
-
+  <did cdkDropList class="drop-list" (cdkDropListDropped)="drop($event)">
+    <app-task-item *ngFor="let task of tasks" [task]="task" cdkDrag></app-task-item>
+  </did>
   <button mat-raised-button color="primary" class="add-task-button" (click)="openNewTaskDialog()">
     <mat-icon>add</mat-icon>
     Add a new task
