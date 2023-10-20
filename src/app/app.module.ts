@@ -16,6 +16,10 @@ import { MatInputModule } from '@angular/material/input'
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AuthModule } from '@auth0/auth0-angular';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
 
 //components
 import { AppComponent } from './app.component';
@@ -34,6 +38,8 @@ import { TaskComponent } from './components/task/task.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
+import { NewTaskDialogComponent } from './components/new-task-dialog/new-task-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +57,7 @@ import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
     TaskComponent,
     TaskDetailsComponent,
     TaskItemComponent,
+    NewTaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,9 +68,13 @@ import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
     MatIconModule,
     MatMenuModule,
     MatSidenavModule,
+    MatSelectModule,
     MatFormFieldModule,
+    MatDatepickerModule,
     MatListModule,
+    MatNativeDateModule,
     MatInputModule,
+    MatDialogModule,
     HttpClientModule,
     ReactiveFormsModule,
     SocialLoginModule,

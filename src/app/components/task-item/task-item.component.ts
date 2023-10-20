@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, Input } from '@angular/core';
 import { TodoTask } from 'src/app/Interfaces/todoTask';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-task-item',
@@ -14,6 +15,8 @@ ngOnInit(): void {
   
 }
 
+constructor(private taskService: TasksService) { }
+
 checkTask(): void {
   var taskFlag = document.getElementById('task-flag');
   if(this.task.DueDate < new Date()){
@@ -27,6 +30,7 @@ checkTask(): void {
 
   deleteTask(): void {
     console.log('delete task');
+    this.taskService.deleteTask(this.task.id).subscribe();
   }
 
   editTask(): void {
