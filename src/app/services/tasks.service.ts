@@ -10,7 +10,7 @@ export class TasksService {
   constructor(private http:HttpClient) { }
 
   getTasks(take: number){
-    return this.http.get<TodoTask[]>(`https://localhost:5400/task/${take}`);
+    return this.http.get<TodoTask[]>(`https://localhost:5400/task/${localStorage.getItem('userId')}/${take}`);
   }
 
   getTask(id: number){

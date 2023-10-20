@@ -26,9 +26,9 @@ namespace WebApplication1.Controllers
 
     
     [HttpGet("{userId}/{take}")]
-    public IEnumerable<ToDoTask> Get(int take)
+    public IEnumerable<ToDoTask> Get(Guid userId, int take)
     {
-      return taskService.GetTasks(take);
+      return taskService.GetTasks(userId, take);
     }
 
     [HttpPost("add")]
