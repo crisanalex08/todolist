@@ -31,7 +31,7 @@ namespace WebApplication1.Services
 
       try
       {
-        db.Add(user);
+        db.Users.Update(user);
         await db.SaveChangesAsync();
       }
       catch (Exception ex)

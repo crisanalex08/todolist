@@ -1,7 +1,7 @@
 import { TaskStatus } from "./task-status";
 
 export interface TodoTask {
-    id: number;
+    id: string;
     title: string;
     description: string;
     CreatedDate: Date;
@@ -10,4 +10,30 @@ export interface TodoTask {
     status: TaskStatus;
     priority: number;
     isDeleted: boolean;
+    userId: string | null;
+}
+
+export class TodoTaskCreate implements TodoTask{
+    id: string = '';
+    title: string;
+    description: string;
+    CreatedDate: Date;
+    UpdatedDate: Date;
+    DueDate: Date;
+    status: TaskStatus;
+    priority: number;
+    isDeleted: boolean;
+    userId: string | null;
+
+    constructor(title: string, description: string, CreatedDate: Date, UpdatedDate: Date, DueDate: Date, status: TaskStatus, priority: number, isDeleted: boolean, userId: string | null){
+        this.title = title;
+        this.description = description;
+        this.CreatedDate = CreatedDate;
+        this.UpdatedDate = UpdatedDate;
+        this.DueDate = DueDate;
+        this.status = status;
+        this.priority = priority;
+        this.isDeleted = isDeleted;
+        this.userId = userId;
+    }
 }
