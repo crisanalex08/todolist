@@ -3,11 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication1.Data;
+using TodoList.Data;
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace TodoList.Migrations
 {
     [DbContext(typeof(TodolistContext))]
     partial class TodolistContextModelSnapshot : ModelSnapshot

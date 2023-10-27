@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Authentication;
 using System.Security.Cryptography;
 using System.Text;
-using WebApplication1.Data;
+using TodoList.Data;
 
-namespace WebApplication1.Services
+namespace TodoList.Services
 {
   public class UserService : IUserService
   {
@@ -13,64 +15,79 @@ namespace WebApplication1.Services
       this.logger = logger;
     }
 
-    public async Task addUser(string name, string email, string password)
+    public async Task<IEnumerable<User>> GetAll()
     {
+      using var db = new TodolistContext();
+      return await db.Users.ToListAsync();
+    }
 
-      var db = new TodolistContext();
-      var salt = GenerateSalt(10);
-      var secret = getHashedPass(salt + password);
-
-      User user = new User()
-      {
-        Id = Guid.NewGuid(),
-        Email = email,
-        Password = secret,
-        Salt = salt,
-        Name = name,
-      };
-
+    public async Task AddUser(User user)
+    {
       try
       {
-        db.Users.Update(user);
+        var db = new TodolistContext();
+        var salt = GenerateSalt(10);
+  
+
+        user.Salt = salt;
+        user.Id = Guid.NewGuid();
+        user.Password = getHashedPass(salt + user.Password);
+        await db.Users.AddAsync(user);
         await db.SaveChangesAsync();
       }
       catch (Exception ex)
       {
-        logger.LogError($"Error in {nameof(addUser)}: {ex.ToString()}");
+        logger.LogError($"Error in {nameof(AddUser)}: {ex.ToString()}");
         throw;
       }
     }
 
-    public Guid validateUser(string email, string password)
+    public Guid ValidateUser(User userToValid)
     {
-      var db = new TodolistContext();
-
-      User user = db.Users.FirstOrDefault(u => u.Email == email);
-
-      if (user == null)
+      try
       {
-        throw new InvalidCredentialException("Invalid email");
-      }
-      else
-      {
-        if (user.Password == getHashedPass(user.Salt + password))
+        var db = new TodolistContext();
+
+        User user = db.Users.FirstOrDefault(u => u.Email == userToValid.Email);
+
+        if (user == null)
         {
-          return user.Id;
+          throw new InvalidCredentialException("Invalid email");
         }
         else
         {
-          throw new InvalidCredentialException("Invalid email");
+          if (user.Password == userToValid.Password)
+          {
+            return user.Id;
+          }
+          else
+          {
+            throw new InvalidCredentialException("Invalid email");
 
+          }
         }
+      }catch(Exception ex)
+      {
+        logger.LogError($"Error while validating user: {ex.Message}", ex);
+        return Guid.Empty;
       }
     }
 
-    public Task removeUser(string username)
+    public async Task<int> DeleteUser(Guid id)
     {
-      throw new NotImplementedException();
+      using var db= new TodolistContext();
+
+      var user = db.Users.FirstOrDefault(u => u.Id == id);
+      if(user == null)
+      {
+        return StatusCodes.Status404NotFound;
+      }
+      db.Remove(user);
+      db.SaveChangesAsync();
+      return StatusCodes.Status200OK;
     }
 
-    public Task updateUser(string username, string password)
+    public Task UpdateUser(string username, string password)
     {
       throw new NotImplementedException();
     }
@@ -106,10 +123,11 @@ namespace WebApplication1.Services
 
   public interface IUserService
   {
-    public Task addUser(string name, string email, string password);
-    public Task removeUser(string username);
-    public Task updateUser(string username, string password);
+    public Task<IEnumerable<User>> GetAll();
+    public Task AddUser(User user);
+    public Task<int> DeleteUser(Guid id);
+    public Task UpdateUser(string username, string password);
 
-    public Guid validateUser(string email, string password);
+    public Guid ValidateUser(User user);
   }
 }

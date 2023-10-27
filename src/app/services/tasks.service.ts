@@ -5,7 +5,7 @@ import { TodoTaskCreate } from '../Interfaces/todoTask';
 import { Guid } from '../utils/Guid';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export const dev = true; //to be deleted
+export const dev = false; //to be deleted
 @Injectable({
   providedIn: 'root'
 })
@@ -73,6 +73,7 @@ export class TasksService {
   }
 
   deleteTask(id: string) {
+    this.taskList = this.taskList.filter((task) => task.id !== id);
     return this.http.delete(`https://localhost:5400/task/delete/${id}`);
   }
 }

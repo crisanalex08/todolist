@@ -1,15 +1,15 @@
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Data;
+using TodoList.Data;
 
-namespace WebApplication1.Services
+namespace TodoList.Services
 {
-  public class TaskStorageService : ITaskStorageService
+  public class TaskService : ITaskService
   {
 
     public async Task Add(Guid userId, ToDoTask task)
     {
       using var db = new TodolistContext();
-      var user = db.Users.Include(u => u.Tasks).FirstOrDefault(user => user.Id == userId);
+      var user = db.Users.FirstOrDefault(user => user.Id == userId);
 
       if (user != null)
       {
@@ -25,12 +25,12 @@ namespace WebApplication1.Services
     public IEnumerable<ToDoTask> GetTasks(Guid userId, int take)
     {
       using var db = new TodolistContext();
-      var user = db.Users.Include(u => u.Tasks).FirstOrDefault(user => user.Id == userId);
+      var user = db.Users.FirstOrDefault(user => user.Id == userId);
 
       if (user != null)
       {
         // Retrieve tasks for the user and limit the results to 'take' items
-        var userTasks = user.Tasks.Take(take).Where(t => t.UserId == userId);
+        var userTasks = db.Tasks.Take(take).Where(t => t.UserId == userId);
         return userTasks;
       }
       else
@@ -61,7 +61,7 @@ namespace WebApplication1.Services
   }
 
 
-  public interface ITaskStorageService
+  public interface ITaskService
   {
     IEnumerable<ToDoTask> GetTasks(Guid userId, int take);
     Task Add(Guid userId, ToDoTask task);

@@ -1,15 +1,25 @@
-using WebApplication1.Services;
+using TodoList.Configuration;
+using TodoList.Services;
+using AutoMapper;
+using System.Reflection;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<ITaskStorageService, TaskStorageService>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddSwaggerGen(c =>
+{
+  c.SwaggerDoc("v1", new OpenApiInfo()
+  {
+    Title = "TodoList API",
+    Version = "v1",
+  });
+});
+builder.Services.ResolveDependencies();
+
 builder.Services.AddCors(o =>
 {
   o.AddPolicy("AllowAll", p =>
@@ -27,6 +37,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
   app.UseSwagger();
+  app.UseSwaggerUI(c =>
+  {
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+  });
   app.UseSwaggerUI();
 }
 
