@@ -14,6 +14,8 @@ namespace TodoList.Configuration
       CreateMap<User, UserEdit>().ReverseMap();
       CreateMap<User, UserResult>().ReverseMap();
       CreateMap<User, UserResult>().ReverseMap();
+      CreateMap<User, UserLogin>().ReverseMap();
+      CreateMap<UserAdd, UserLogin>().ReverseMap();
 
       CreateMap<ToDoTask, ToDoTaskAdd>().ReverseMap();
       CreateMap<ToDoTask, ToDoTaskEdit>().ReverseMap();

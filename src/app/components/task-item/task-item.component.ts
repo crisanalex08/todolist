@@ -18,19 +18,11 @@ ngOnInit(): void {
 constructor(private taskService: TasksService) { }
 
 checkTask(): void {
-  var taskFlag = document.getElementById('task-flag');
-  if(this.task.DueDate < new Date()){
-    this.latetask = true;
-    taskFlag!.style.color = 'red';
-  }else{
-    this.latetask = false;
-    taskFlag!.style.color = 'green';
-  }
 }
 
   deleteTask(): void {
     console.log('delete task');
-    this.taskService.deleteTask(this.task.id).subscribe();
+    this.taskService.deleteTask(this.task.id);
   }
 
   editTask(): void {

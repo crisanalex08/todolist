@@ -14,7 +14,5 @@ namespace TodoList.DTOs.ToDoTask
     public TaskStatus Status { get; set; }
     public int Priority { get; set; }
     public bool IsDeleted { get; set; }
-    [Required]
-    public virtual Guid UserId { get; set; }
   }
 }

@@ -4,6 +4,7 @@ using System.Security.Authentication;
 using System.Security.Cryptography;
 using System.Text;
 using TodoList.Data;
+using TodoList.DTOs.Users;
 
 namespace TodoList.Services
 {
@@ -42,7 +43,7 @@ namespace TodoList.Services
       }
     }
 
-    public Guid ValidateUser(User userToValid)
+    public Guid ValidateUser(UserLogin userToValid)
     {
       try
       {
@@ -56,7 +57,7 @@ namespace TodoList.Services
         }
         else
         {
-          if (user.Password == userToValid.Password)
+          if (user.Password == getHashedPass( user.Salt + userToValid.Password))
           {
             return user.Id;
           }
@@ -128,6 +129,6 @@ namespace TodoList.Services
     public Task<int> DeleteUser(Guid id);
     public Task UpdateUser(string username, string password);
 
-    public Guid ValidateUser(User user);
+    public Guid ValidateUser(UserLogin user);
   }
 }

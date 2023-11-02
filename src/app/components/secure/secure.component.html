@@ -7,6 +7,13 @@
     <button mat-icon-button>
       <mat-icon>home</mat-icon>
     </button>
+    <span class="spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-button class="landing-toolbar-button">Log Out</button>
+    </mat-menu>
   </mat-toolbar>
   <mat-drawer-container>
     <mat-drawer #drawer [(opened)]="navBar" mode="side">

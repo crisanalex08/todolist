@@ -37,9 +37,10 @@ namespace TodoList.Controllers
     {
       try
       {
+        var userlogin = _mapper.Map<UserLogin>(userDto);
         var user = _mapper.Map<User>(userDto);
         await _userService.AddUser(user);
-        return Ok(_userService.ValidateUser(user));
+        return Ok(_userService.ValidateUser(userlogin));
       }
       catch (Exception ex)
       {
@@ -49,7 +50,7 @@ namespace TodoList.Controllers
     }
 
     [HttpGet("/validate")]
-    public Guid ValidateUser(User user)
+    public Guid ValidateUser([FromQuery]UserLogin user)
     {
       try
       {

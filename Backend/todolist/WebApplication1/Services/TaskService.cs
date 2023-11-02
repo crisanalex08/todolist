@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TodoList.Data;
+using TodoList.Migrations;
 
 namespace TodoList.Services
 {
@@ -9,6 +10,9 @@ namespace TodoList.Services
     public async Task Add(Guid userId, ToDoTask task)
     {
       using var db = new TodolistContext();
+      task.Id =  Guid.NewGuid();
+      task.CreatedDate = DateTime.Now;
+      task.UpdatedDate = DateTime.Now;
       var user = db.Users.FirstOrDefault(user => user.Id == userId);
 
       if (user != null)
@@ -22,16 +26,25 @@ namespace TodoList.Services
       }
     }
 
-    public IEnumerable<ToDoTask> GetTasks(Guid userId, int take)
+    public async Task<IEnumerable<ToDoTask>> GetTasks(Guid userId, int take)
     {
       using var db = new TodolistContext();
       var user = db.Users.FirstOrDefault(user => user.Id == userId);
 
       if (user != null)
       {
+
         // Retrieve tasks for the user and limit the results to 'take' items
-        var userTasks = db.Tasks.Take(take).Where(t => t.UserId == userId);
-        return userTasks;
+        if (take > 0)
+        {
+          var userTasks = await db.Tasks.Where(t => t.UserId == userId).Take(take).ToListAsync();
+          return userTasks;
+        }
+        else
+        {
+          var userTasks = await db.Tasks.Where(t => t.UserId == userId).ToListAsync();
+          return userTasks;
+        }
       }
       else
       {
@@ -39,8 +52,9 @@ namespace TodoList.Services
       }
     }
 
-    public async Task Delete(Guid taskId)
+    public async Task Delete(string tId)
     {
+      var taskId = Guid.Parse(tId);
       try
       {
         using var db = new TodolistContext();
@@ -58,13 +72,45 @@ namespace TodoList.Services
         throw ex;
       }
     }
+
+    public async Task Edit(ToDoTask task)
+    {
+      try
+      {
+        using var db = new TodolistContext();
+
+        var oldTask = db.Tasks.FirstOrDefault(t => t.Id == task.Id);
+        if (oldTask != null)
+        {
+          oldTask.IsDeleted = task.IsDeleted;
+          oldTask.Status = task.Status;
+          oldTask.DueDate = task.DueDate;
+          oldTask.CreatedDate = task.CreatedDate;
+          oldTask.UpdatedDate = task.UpdatedDate;
+          oldTask.Description = task.Description;
+          oldTask.Title = task.Title;
+          oldTask.Priority = task.Priority;
+          await db.SaveChangesAsync();
+        }
+        else
+        {
+          throw new Exception($"Error while editing the task: {task.Id}");
+        }
+      }
+      catch (Exception)
+      {
+
+        throw;
+      }
+    }
   }
 
 
   public interface ITaskService
   {
-    IEnumerable<ToDoTask> GetTasks(Guid userId, int take);
+    Task<IEnumerable<ToDoTask>> GetTasks(Guid userId, int take);
     Task Add(Guid userId, ToDoTask task);
-    Task Delete(Guid taskId);
+    Task Edit(ToDoTask task);
+    Task Delete(string taskId);
   }
 }

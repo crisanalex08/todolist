@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TodoList.Data;
+using TodoList.DTOs.ToDoTask;
 using TodoList.Services;
 
 namespace TodoList.Controllers
@@ -20,18 +21,51 @@ namespace TodoList.Controllers
       _logger = logger;
       _mapper = mapper;
     }
-    
+
     [HttpGet("{userId}/{take}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IEnumerable<ToDoTask> Get(Guid userId, int take)
+    public async Task<IActionResult> Get(Guid userId, int take)
     {
-      return taskService.GetTasks(userId, take);
+      var tasks = await taskService.GetTasks(userId, take);
+      return Ok(_mapper.Map<IEnumerable<ToDoTaskResult>>(tasks));
+
     }
 
-    [HttpPost("add_task/{userId}")]
-    public async Task Post(Guid userId,[FromBody]ToDoTask task)
+    [HttpPost("add_task")]
+    public async Task Post([FromBody]ToDoTaskAdd taskAdd)
     {
-      await taskService.Add(userId, task); 
+      var task = _mapper.Map<ToDoTask>(taskAdd);
+      await taskService.Add(taskAdd.UserId, task);
+      
+    }
+
+    [HttpPut("edit_task")]
+    public async Task Put([FromBody] ToDoTaskEdit taskEdit)
+    {
+      try
+      {
+        var task = _mapper.Map<ToDoTask>(taskEdit);
+        await taskService.Edit(task);
+      }
+      catch (Exception e)
+      {
+        _logger.LogError(e.Message, e);
+        throw;
+      }
+    }
+
+    [HttpDelete("delete_task/{taskId}")]
+    public async Task<IActionResult> Delete([FromRoute] string taskId)
+    {
+      try
+      {
+        await taskService.Delete(taskId);
+        return NoContent(); // Return 204 No Content upon successful deletion.
+      }
+      catch (Exception ex)
+      {
+        return BadRequest($"Failed to delete the task: {ex.Message}");
+      }
     }
   }
 }

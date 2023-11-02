@@ -6,7 +6,7 @@
     <button mat-button class="landing-toolbar-button">Templates</button>
     <button mat-button class="landing-toolbar-button">Resources</button>
     <button mat-button class="landing-toolbar-button">Pricing</button>
-    <button mat-button class="landing-toolbar-button">Login</button>
+    <button mat-button class="landing-toolbar-button" (click)="goToLogin()">Login</button>
     <button mat-raised-button color="primary" (click)="handleGetStarted()">
       Get Started
     </button>
@@ -23,7 +23,7 @@
       <button mat-button class="landing-toolbar-button">Templates</button>
       <button mat-button class="landing-toolbar-button">Resources</button>
       <button mat-button class="landing-toolbar-button">Pricing</button>
-      <button mat-button class="landing-toolbar-button">Login</button>
+      <button mat-button class="landing-toolbar-button" (click)="goToLogin()">Login</button>
     </mat-menu>
   </mat-toolbar>
 </p>
