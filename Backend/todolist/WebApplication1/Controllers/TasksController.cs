@@ -44,8 +44,7 @@ namespace TodoList.Controllers
     {
       try
       {
-        var task = _mapper.Map<ToDoTask>(taskEdit);
-        await taskService.Edit(task);
+        await taskService.Edit(taskEdit);
       }
       catch (Exception e)
       {

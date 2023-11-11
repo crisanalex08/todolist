@@ -11,5 +11,7 @@ namespace TodoList.DTOs.Users
     [StringLength(100, ErrorMessage = "The field must be between {2} and  {1} characters")]
     public string Name { get; set; }
     public string Email { get; set; }
+
+    public bool IsAdmin { get; set; }
   }
 }

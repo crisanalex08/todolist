@@ -15,18 +15,34 @@ export class TaskDetailsComponent implements OnInit {
   public dueDateEdit: boolean = false;
   public statusEdit: boolean = false;
   public date: FormControl = new FormControl(new Date(this.data.dueDate));
+  public selectedStatus;
 
   ngOnInit(): void {
-    console.log(this.tempTask);
+    console.log(this.tempTask.status);
   }
-
+  public statuses: { value: number; viewValue: string }[];
+  
   constructor(
     public dialogRef: MatDialogRef<TaskDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.tempTask = data;
-    console.log(this.tempTask);
     this.date = new FormControl(data.dueDate);
+    this.statuses = [
+      {
+        value: 0,
+        viewValue: TaskStatus[0],
+      },
+      {
+        value: 1,
+        viewValue: 'In Progress',
+      },
+      {
+        value: 2,
+        viewValue: TaskStatus[2],
+      },
+    ];
+    this.selectedStatus = this.statuses[this.tempTask.status].viewValue;
   }
 
   priorities: { value: number; viewValue: string }[] = [
@@ -45,21 +61,6 @@ export class TaskDetailsComponent implements OnInit {
     {
       value: 4,
       viewValue: 'Urgent',
-    },
-  ];
-
-  statuses: { value: number; viewValue: string }[] = [
-    {
-      value: 0,
-      viewValue: TaskStatus[0],
-    },
-    {
-      value: 1,
-      viewValue: TaskStatus[1],
-    },
-    {
-      value: 2,
-      viewValue: 'In Progress',
     },
   ];
 

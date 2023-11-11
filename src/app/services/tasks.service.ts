@@ -202,14 +202,14 @@ export class TasksService {
 
   updateTask(
     id: string,
-    title: string,
-    description: string,
-    createdDate: Date,
-    updatedDate: Date,
-    dueDate: Date,
-    priority: any,
-    status: any,
-    isDeleted: boolean
+    title: string | null,
+    description: string | null,
+    createdDate: Date | null,
+    updatedDate: Date | null,
+    dueDate: Date | null,
+    priority: any | null,
+    status: TaskStatus | null,
+    isDeleted: boolean | null
   ) {
     const task = {
       id: id,
@@ -218,8 +218,8 @@ export class TasksService {
       createdDate: createdDate,
       updatedDate: updatedDate,
       dueDate: dueDate,
-      priority: priority.value,
-      status: status.value,
+      priority: priority === null ? priority : priority.value,
+      status: status,
       isDeleted: isDeleted,
       userId: localStorage.getItem('userId'),
     };
@@ -245,5 +245,9 @@ export class TasksService {
         );
         console.log('task deleted');
       });
+  }
+
+  toggleTaskComplete(id: string) {
+    return this.updateTask(id, null, null, null, new Date(), null, null, 2, false);  //status 2 = done
   }
 }

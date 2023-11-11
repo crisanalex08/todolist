@@ -47,17 +47,18 @@
       </mat-form-field>
       <mat-form-field class="status">
         <mat-label>Task status</mat-label>
-        <mat-select
-          [(ngModel)]="tempTask.status"
-          [ngModelOptions]="{ standalone: true }"
-        >
-          <mat-option *ngFor="let status of statuses" [value]="tempTask.status">
-            {{ status.viewValue }}
-          </mat-option>
+        <mat-select [(value)]="this.tempTask.status">
+          <mat-option (value)="0">{{ this.statuses[0].viewValue }}</mat-option>
+          <mat-option (value)="1">{{ this.statuses[1].viewValue }}</mat-option>
+          <mat-option (value)="2">{{ this.statuses[2].viewValue }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <h3>Created at: {{ tempTask.createdDate | date:'yyyy-MM-dd hh:mm:ss'}}</h3>
-      <h3>Updated at: {{ tempTask.updatedDate | date:'yyyy-MM-dd hh:mm:ss'}}</h3>
+      <h3>
+        Created at: {{ tempTask.createdDate | date : "yyyy-MM-dd hh:mm:ss" }}
+      </h3>
+      <h3>
+        Updated at: {{ tempTask.updatedDate | date : "yyyy-MM-dd hh:mm:ss" }}
+      </h3>
     </form>
   </span>
   <span>

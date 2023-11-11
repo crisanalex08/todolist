@@ -2,6 +2,8 @@
   <mat-toolbar>
     <h3>{{ task.title }}</h3>
     <span class="spacer"></span>
+    <mat-icon class="task-icon"  (click)="toggleTaskComplete();$event.stopPropagation()" *ngIf="!done">check_box_outline_blank</mat-icon>
+    <mat-icon class="task-icon"  (click)="toggleTaskComplete();$event.stopPropagation()" *ngIf="done">check_box</mat-icon>
     <mat-icon class="task-icon" (click)="deleteTask()">delete_outline</mat-icon>
     <mat-icon class="task-icon" (click)="editTask()">more_horiz</mat-icon>
   </mat-toolbar>

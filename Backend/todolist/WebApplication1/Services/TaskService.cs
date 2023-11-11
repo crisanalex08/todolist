@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TodoList.Data;
+using TodoList.DTOs.ToDoTask;
 using TodoList.Migrations;
 
 namespace TodoList.Services
@@ -73,7 +74,7 @@ namespace TodoList.Services
       }
     }
 
-    public async Task Edit(ToDoTask task)
+    public async Task Edit(ToDoTaskEdit task)
     {
       try
       {
@@ -82,14 +83,15 @@ namespace TodoList.Services
         var oldTask = db.Tasks.FirstOrDefault(t => t.Id == task.Id);
         if (oldTask != null)
         {
-          oldTask.IsDeleted = task.IsDeleted;
-          oldTask.Status = task.Status;
-          oldTask.DueDate = task.DueDate;
-          oldTask.CreatedDate = task.CreatedDate;
-          oldTask.UpdatedDate = task.UpdatedDate;
-          oldTask.Description = task.Description;
-          oldTask.Title = task.Title;
-          oldTask.Priority = task.Priority;
+          oldTask.IsDeleted = task.IsDeleted ?? oldTask.IsDeleted;
+          oldTask.Status = task.Status ?? oldTask.Status;
+          oldTask.DueDate = task.DueDate ?? oldTask.DueDate;
+          oldTask.CreatedDate = task.CreatedDate ?? oldTask.CreatedDate;
+          oldTask.UpdatedDate = task.UpdatedDate ?? oldTask.UpdatedDate;
+          oldTask.Description = task.Description ?? oldTask.Description;
+          oldTask.Title = task.Title ?? oldTask.Title;
+          oldTask.Priority = task.Priority ?? oldTask.Priority;
+
           await db.SaveChangesAsync();
         }
         else
@@ -110,7 +112,7 @@ namespace TodoList.Services
   {
     Task<IEnumerable<ToDoTask>> GetTasks(Guid userId, int take);
     Task Add(Guid userId, ToDoTask task);
-    Task Edit(ToDoTask task);
+    Task Edit(ToDoTaskEdit task);
     Task Delete(string taskId);
   }
 }

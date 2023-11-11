@@ -30,6 +30,8 @@ namespace TodoList.Data
     public string Email { get; set; }
     public string Password { get; set; }
     public string Salt { get; set; }
+
+    public bool IsAdmin { get; set; }
   }
 
 
