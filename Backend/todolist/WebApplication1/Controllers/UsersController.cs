@@ -32,6 +32,41 @@ namespace TodoList.Controllers
       return Ok(_mapper.Map<IEnumerable<UserResult>>(users));
     }
 
+
+    [HttpGet("userId")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task <IActionResult> GetUser(Guid userId)
+    {
+      try
+      {
+       var user = _userService.GetUser(userId);
+        return Ok(_mapper.Map<UserResult>(user));
+      }
+      catch (Exception e)
+      {
+        _logger.LogError(e.Message);
+        throw;
+      }
+
+    }
+
+    [HttpGet("/isAdmin")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> IsAdmin(Guid userId)
+    {
+      try
+      {
+        var isAdmin = await _userService.IsAdmin(userId);
+        return Ok(isAdmin);
+      }
+      catch (Exception e)
+      {
+        _logger.LogError(e.Message);
+        throw;
+      }
+
+    }
+
     [HttpPost("/register")]
     public async Task<IActionResult> RegisterUser([FromBody]UserAdd userDto)
     {

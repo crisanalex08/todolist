@@ -12,7 +12,8 @@
       <mat-icon>person</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-button class="landing-toolbar-button">Log Out</button>
+      <button mat-button class="landing-toolbar-button" (click)="onLogOut()">Log Out</button>
+      <button mat-button class="landing-toolbar-button" *ngIf="IsUserAdmin" (click)="onAdminPanel()">Admin Panel</button>
     </mat-menu>
   </mat-toolbar>
   <mat-drawer-container>

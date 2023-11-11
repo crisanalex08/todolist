@@ -1,35 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 const baseUrl = 'http://localhost:4200';
 
 @Component({
   selector: 'app-secure',
   templateUrl: './secure.component.html',
-  styleUrls: ['./secure.component.css']
+  styleUrls: ['./secure.component.css'],
 })
-export class SecureComponent {
-
-navBar: boolean = false;
-  constructor(private router:Router) { }
+export class SecureComponent implements OnInit {
+  IsUserAdmin: boolean = false;
+  navBar: boolean = false;
+  constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
     this.navBar = false;
+    this.auth.isUserAdmin().subscribe((d: any) => {
+      this.IsUserAdmin = d;
+    });
   }
 
-  navBarToggle(){
+  navBarToggle() {
     this.navBar = !this.navBar;
   }
 
-  onInbox(){
+  onInbox() {
     this.router.navigateByUrl(`/secure/inbox`);
   }
 
-  onToday(){
+  onToday() {
     this.router.navigateByUrl(`/secure/today`);
   }
 
-  onUpcoming(){
+  onUpcoming() {
     this.router.navigateByUrl(`/secure/upcoming`);
+  }
+
+  onLogOut() {
+    this.auth.logOut();
+    this.router.navigateByUrl(`/login`);
+  }
+
+  onAdminPanel() {
+    this.router.navigateByUrl(`/admin`);
   }
 }

@@ -4,6 +4,7 @@ import { SecureComponent } from './secure.component';
 import { InboxComponent } from '../inbox/inbox.component';
 import { TodayComponent } from '../today/today.component';
 import { UpcomingComponent } from '../upcoming/upcoming.component';
+import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     component: SecureComponent,
     children: [
       { path: 'secure', component: SecureComponent },
+      { path: 'admin', component: AdminPanelComponent},
       { path: 'inbox', component: InboxComponent },
       { path: 'today', component: TodayComponent },
       { path: 'upcoming', component: UpcomingComponent },

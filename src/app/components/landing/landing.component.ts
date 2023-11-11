@@ -32,6 +32,15 @@ export class LandingComponent {
     this.router.navigate(['/auth/login']);
   }
 
+  goToPricing() {
+    console.log('goToLogin');
+    this.router.navigate(['/pricing']);
+  }
+
+  goToFeatures() {
+    this.router.navigate(['/features']);
+  }
+
   handleGetStarted(){
     this.router.navigate(["/auth/signup"]);
   }

@@ -43,6 +43,23 @@ namespace TodoList.Services
       }
     }
 
+    public User GetUser(Guid uid)
+    {
+      var db = new TodolistContext();
+
+      var user = db.Users.FirstOrDefault(u => u.Id == uid);
+
+      if(user != null)
+      {
+        return user;
+      }
+      else
+      {
+        throw new ArgumentException($"Cannot find user with the following userId: {uid}");
+      }
+
+    }
+
     public Guid ValidateUser(UserLogin userToValid)
     {
       try
@@ -120,15 +137,33 @@ namespace TodoList.Services
 
       return builder.ToString();
     }
+
+    public async Task<bool> IsAdmin(Guid uid)
+    {
+      var db = new TodolistContext();
+
+      var user = await db.Users.FirstOrDefaultAsync(u => u.Id == uid);
+
+      if (user != null)
+      {
+        return user.IsAdmin;
+      }
+      else
+      {
+        throw new ArgumentException($"Cannot find user with the following userId: {uid}");
+      }
+    }
   }
 
   public interface IUserService
   {
+    public User GetUser(Guid uid);
     public Task<IEnumerable<User>> GetAll();
     public Task AddUser(User user);
     public Task<int> DeleteUser(Guid id);
     public Task UpdateUser(string username, string password);
 
+    public Task<bool> IsAdmin(Guid uid);
     public Guid ValidateUser(UserLogin user);
   }
 }

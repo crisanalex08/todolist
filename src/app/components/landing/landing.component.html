@@ -2,10 +2,8 @@
   <mat-toolbar class="fullsize-toolbar" *ngIf="!miniNav">
     <span>todolist</span>
     <span class="spacer"></span>
-    <button mat-button class="landing-toolbar-button">Features</button>
-    <button mat-button class="landing-toolbar-button">Templates</button>
-    <button mat-button class="landing-toolbar-button">Resources</button>
-    <button mat-button class="landing-toolbar-button">Pricing</button>
+    <button mat-button class="landing-toolbar-button" (click)="goToFeatures()">Features</button>
+    <button mat-button class="landing-toolbar-button" (click)="goToPricing()">Pricing</button>
     <button mat-button class="landing-toolbar-button" (click)="goToLogin()">Login</button>
     <button mat-raised-button color="primary" (click)="handleGetStarted()">
       Get Started
@@ -19,10 +17,8 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-button class="landing-toolbar-button">Features</button>
-      <button mat-button class="landing-toolbar-button">Templates</button>
-      <button mat-button class="landing-toolbar-button">Resources</button>
-      <button mat-button class="landing-toolbar-button">Pricing</button>
+      <button mat-button class="landing-toolbar-button" (click)="goToFeatures()">Features</button>
+      <button mat-button class="landing-toolbar-button" (click)="goToPricing()")>Pricing</button>
       <button mat-button class="landing-toolbar-button" (click)="goToLogin()">Login</button>
     </mat-menu>
   </mat-toolbar>

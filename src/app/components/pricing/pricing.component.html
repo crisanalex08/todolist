@@ -1,0 +1,111 @@
+<div class="card-container">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Basic</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="features-list">
+        <h4>Features:</h4>
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon>content_paste</mat-icon>
+            Max 10 tasks
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>storage</mat-icon>
+            1 database
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            1 project
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon></mat-icon>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="card-price">
+        <span class="card-price">$0</span>
+        <span class="card-price-period">/month</span>
+      </div>
+    </mat-card-content>
+    <button mat-raised-button color="primary" class="card-button" (click)="getStarted()">
+      Get Started
+    </button>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Pro</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="features-list">
+        <h4>Features:</h4>
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon>content_paste</mat-icon>
+            Max 50 tasks per project
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>storage</mat-icon>
+            2 databases
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            2 projects
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon></mat-icon>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="card-price">
+        <span class="card-price">$49</span>
+        <span class="card-price-period">/month</span>
+      </div>
+    </mat-card-content>
+    <button mat-raised-button color="primary" class="card-button" (click)="goToCheckout(1)">
+      Buy now
+    </button>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Exclusive</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="features-list">
+        <h4>Features:</h4>
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon>done</mat-icon>
+            No limit of tasks
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>storage</mat-icon>
+            5 databases
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            Up to 10 projects
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>support</mat-icon>
+            24/7 support
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="card-price">
+        <span class="card-price">$99</span>
+        <span class="card-price-period">/month</span>
+      </div>
+    </mat-card-content>
+    <button mat-raised-button color="primary" class="card-button" (click)="goToCheckout(2)">
+      Buy now
+    </button>
+  </mat-card>
+</div>
+
+<div class="landing-image">
+  <img src="assets/images/5399986.jpg" alt="landing-image" />
+</div>

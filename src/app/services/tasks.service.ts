@@ -13,7 +13,9 @@ export const dev = false; //to be deleted
 export class TasksService {
   userId: any;
   taskList: TodoTask[] = [];
+  doneTasksList: TodoTask[] = [];
   readonly taskSubject = new BehaviorSubject<TodoTask[]>(this.taskList);
+  readonly doneTasksSubject = new BehaviorSubject<TodoTask[]>(this.doneTasksList);
 
   constructor(private http: HttpClient) {
     this.userId = localStorage.getItem('userId');
@@ -249,5 +251,9 @@ export class TasksService {
 
   toggleTaskComplete(id: string) {
     return this.updateTask(id, null, null, null, new Date(), null, null, 2, false);  //status 2 = done
+  }
+
+  toggleTaskUnComplete(id: string) {
+    return this.updateTask(id, null, null, null, new Date(), null, null, 1, false);  //status 1 = In Progress
   }
 }

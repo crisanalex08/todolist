@@ -21,6 +21,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {DragDropModule} from '@angular/cdk/drag-drop'
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 //components
 import { AppComponent } from './app.component';
@@ -40,6 +45,11 @@ import { TaskDetailsComponent } from './components/task-details/task-details.com
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
 import { NewTaskDialogComponent } from './components/new-task-dialog/new-task-dialog.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { PricingComponent } from './components/pricing/pricing.component';
+import { CheckoutDialogComponent } from './components/checkout-dialog/checkout-dialog.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { FeaturesComponent } from './components/features/features.component';
 
 
 @NgModule({
@@ -58,13 +68,19 @@ import { NewTaskDialogComponent } from './components/new-task-dialog/new-task-di
     TaskComponent,
     TaskDetailsComponent,
     TaskItemComponent,
-    NewTaskDialogComponent
+    NewTaskDialogComponent,
+    AdminPanelComponent,
+    PricingComponent,
+    CheckoutDialogComponent,
+    CheckoutComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatToolbarModule,
+    MatSnackBarModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
@@ -72,6 +88,7 @@ import { NewTaskDialogComponent } from './components/new-task-dialog/new-task-di
     MatSelectModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
     MatListModule,
     MatNativeDateModule,
     MatInputModule,
@@ -81,6 +98,8 @@ import { NewTaskDialogComponent } from './components/new-task-dialog/new-task-di
     SocialLoginModule,
     DragDropModule,
     FormsModule,
+    MatCardModule,
+    MatTableModule,
     AuthConfigModule,
     AuthModule.forRoot({
       domain: 'dev-rkarlbjvzmn4thqm.us.auth0.com',

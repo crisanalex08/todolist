@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Checkout</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- Payment form -->
+    <form>
+      <mat-form-field>
+        <mat-label>Card Number</mat-label>
+        <input matInput placeholder="0000-0000-0000-0000" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Name on Card</mat-label>
+        <input matInput placeholder="Jhon Doe" required />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Expiration Date</mat-label>
+        <input matInput placeholder="06/29" required />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>CVV</mat-label>
+        <input matInput placeholder="123" required />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <!-- Payment action buttons -->
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="makePayment()">
+        Pay Now
+      </button>
+      <button mat-button (click)="cancelPayment()">Cancel</button>
+    </mat-card-actions>
+
+    <!-- Progress spinner -->
+    <mat-progress-spinner
+      *ngIf="paymentProcessing"
+      mode="indeterminate"
+    ></mat-progress-spinner>
+  </mat-card-actions>
+</mat-card>
+
+<div class="landing-image">
+    <img src="assets/images/5399986.jpg" alt="landing-image" />
+  </div>

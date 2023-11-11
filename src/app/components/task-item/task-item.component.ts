@@ -45,5 +45,18 @@ checkTask(): void {
     });
   }
 
+  toggleTaskUnComplete(): void {
+    console.log('toggle task complete');
+    this.taskService.toggleTaskUnComplete(this.task.id).subscribe((task: any) => {
+      this.taskService.getTasks(0).subscribe((tasks: any) => {
+        this.taskService.taskList = tasks;
+      });
+      console.log("task status: " + this.task.status);
+      if(this.task.status == 1){
+        this.done = false;
+      }
+    });
+  }
+
   
 }
