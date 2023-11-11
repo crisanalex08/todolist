@@ -1,0 +1,25 @@
+.upcoming-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-left: 20em;
+    padding-right: 20em;
+    overflow: hidden;
+  }
+  
+  h2 {
+    font-weight: bold;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .drop-list{
+    overflow-y: scroll;
+  }
+  
+  .add-task-button{
+    margin: 10px;
+  }
+  

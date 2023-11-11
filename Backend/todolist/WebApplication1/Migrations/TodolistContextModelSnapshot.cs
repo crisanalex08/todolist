@@ -3,11 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication1.Data;
+using TodoList.Data;
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace TodoList.Migrations
 {
     [DbContext(typeof(TodolistContext))]
     partial class TodolistContextModelSnapshot : ModelSnapshot
@@ -17,9 +17,9 @@ namespace WebApplication1.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
 
-            modelBuilder.Entity("WebApplication1.Data.ToDoTask", b =>
+            modelBuilder.Entity("TodoList.Data.ToDoTask", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
@@ -54,12 +54,10 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("WebApplication1.Data.User", b =>
+            modelBuilder.Entity("TodoList.Data.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -68,6 +66,9 @@ namespace WebApplication1.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -84,20 +85,6 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("WebApplication1.Data.ToDoTask", b =>
-                {
-                    b.HasOne("WebApplication1.Data.User", null)
-                        .WithMany("Tasks")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("WebApplication1.Data.User", b =>
-                {
-                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

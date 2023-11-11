@@ -24,4 +24,12 @@ navBar: boolean = false;
   onInbox(){
     this.router.navigateByUrl(`/secure/inbox`);
   }
+
+  onToday(){
+    this.router.navigateByUrl(`/secure/today`);
+  }
+
+  onUpcoming(){
+    this.router.navigateByUrl(`/secure/upcoming`);
+  }
 }

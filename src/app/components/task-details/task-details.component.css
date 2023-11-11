@@ -1,0 +1,69 @@
+.dialog-container{
+    width: 60vw;
+    overflow-x: fixed;
+    overflow-y: hidden;
+    justify-content: center;
+    padding: 10px;
+    z-index: -1;
+}
+
+.title-input{
+    font-size: large;
+}
+
+.details-dialog-content{
+    height: 480px;
+    width: 1000px;
+}
+
+.title{
+    font-size: large;
+}
+
+.description-tile:hover{
+    font-size: medium;
+    background-color: rgb(221, 221, 221);
+    padding: 5px;
+    margin: 5px;
+}
+
+.description-tile{
+    font-size: medium;
+    background-color: rgb(236, 236, 236); 
+    padding: 5px;
+    margin: 5px;
+}
+
+.description{
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+}
+
+.title{
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+}
+
+.due-date{
+    font-size: medium;
+}
+
+.dialog-actions{
+    display: flex;
+    margin-top: auto;
+    justify-content: flex-end;
+}
+
+.priority{
+    margin: 5px;
+}
+
+.due-date{
+    margin: 5px;
+}
+
+.status{
+    margin: 5px;
+}

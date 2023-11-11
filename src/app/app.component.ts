@@ -9,6 +9,6 @@ export class AppComponent {
   title = 'todolist';
 
   ngOnInit() {
-    localStorage.setItem('userId', '');
+
   }
 }

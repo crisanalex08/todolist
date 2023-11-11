@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApplication1.Data
+namespace TodoList.Data
 {
 
   public class TodolistContext : DbContext
@@ -25,23 +25,20 @@ namespace WebApplication1.Data
 
   public class User
   {
-
     [Key] public Guid Id { get; set; }
-
     public string Name { get; set; }
     public string Email { get; set; }
-
     public string Password { get; set; }
     public string Salt { get; set; }
 
-    public ICollection<ToDoTask> Tasks { get; set; } = new List<ToDoTask>();
+    public bool IsAdmin { get; set; }
   }
 
 
   public class ToDoTask
   {
     [Key]
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public DateTime CreatedDate { get; set; }

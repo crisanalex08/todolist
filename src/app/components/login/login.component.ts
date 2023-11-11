@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 const googleLogoURL ="http://localhost:4200/assets/images/svg/google.svg";
 const facebookLogoURL ="http://localhost:4200/assets/images/svg/facebook.svg";
@@ -14,7 +17,9 @@ const twitterLogoURL ="http://localhost:4200/assets/images/svg/twitter.svg";
 export class LoginComponent {
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private authService: AuthService,
+    private router: Router
   ) {
     this.matIconRegistry.addSvgIcon("google-logo", this.domSanitizer.bypassSecurityTrustResourceUrl(googleLogoURL));
     this.matIconRegistry.addSvgIcon("facebook-logo", this.domSanitizer.bypassSecurityTrustResourceUrl(facebookLogoURL));
@@ -23,6 +28,7 @@ export class LoginComponent {
 
 
    email = new FormControl('', [Validators.required, Validators.email]);
+   password = new FormControl('', [Validators.required]);
    loginUsingEmail : boolean = false;
    hide: boolean = true;
 
@@ -50,5 +56,12 @@ export class LoginComponent {
       this.loginUsingEmail = true;
     }
 
-    login(){}
+    login(){
+      this.authService.loginUser(this.email.value, this.password.value).then(
+        () => {
+          console.log("login successful");
+          this.router.navigate(['/secure/inbox']);
+        }
+      );
+    }
 }

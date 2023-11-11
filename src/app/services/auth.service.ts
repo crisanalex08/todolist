@@ -9,15 +9,22 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  baseUrl = 'https://localhost:5400';
+  baseUrl = 'https://localhost:7260';
 
   public async registerUser(name: string | null, email: string | null, password: string | null): Promise<void> {
-    this.http.get<string>(`https://localhost:5400/register${name}/${email}/${password}`).subscribe(
+    this.http.get<string>(`${this.baseUrl}/register${name}/${email}/${password}`).subscribe(
       (d: string) => {
         localStorage.setItem('userId', d);
       });
   }
 
+  public async loginUser(email: string | null, password: string | null): Promise<void> {
+    this.http.get<string>(`${this.baseUrl}/validate?Email=${email}&Password=${password}`).subscribe(
+      (d: string) => {
+        console.log(d);
+        localStorage.setItem('userId', d);
+      });
+  }
   private hashPassword(pass: string) {
     var hash = 0;
     var i = 0;

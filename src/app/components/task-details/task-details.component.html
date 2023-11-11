@@ -1,1 +1,71 @@
-<p>task-details works!</p>
+<div class="dialog-container">
+  <span mat-dialog-title>
+    <mat-form-field class="title">
+      <mat-label>Title</mat-label>
+      <input
+        [(ngModel)]="tempTask.title"
+        [ngModelOptions]="{ standalone: true }"
+        matInput
+        value="{{ tempTask.title }}"
+      />
+    </mat-form-field>
+  </span>
+
+  <span mat-dialog-content>
+    <form>
+      <mat-form-field class="description">
+        <mat-label>Description</mat-label>
+        <textarea
+          [(ngModel)]="tempTask.description"
+          [ngModelOptions]="{ standalone: true }"
+          matInput
+          value="{{ tempTask.description }}"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field class="due-date">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="picker1" [formControl]="date" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="priority">
+        <mat-label>Task priority</mat-label>
+        <mat-select
+          [(ngModel)]="tempTask.priority"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <mat-option
+            *ngFor="let priority of priorities"
+            [value]="tempTask.priority"
+          >
+            {{ priority.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="status">
+        <mat-label>Task status</mat-label>
+        <mat-select [(value)]="this.tempTask.status">
+          <mat-option (value)="0">{{ this.statuses[0].viewValue }}</mat-option>
+          <mat-option (value)="1">{{ this.statuses[1].viewValue }}</mat-option>
+          <mat-option (value)="2">{{ this.statuses[2].viewValue }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h3>
+        Created at: {{ tempTask.createdDate | date : "yyyy-MM-dd hh:mm:ss" }}
+      </h3>
+      <h3>
+        Updated at: {{ tempTask.updatedDate | date : "yyyy-MM-dd hh:mm:ss" }}
+      </h3>
+    </form>
+  </span>
+  <span>
+    <div mat-dialog-actions class="dialog-actions">
+      <button mat-button (click)="onSaveClick()">Save</button>
+      <button mat-button (click)="onDeleteClick()">Delete</button>
+      <button mat-button (click)="onCloseClick()">Close</button>
+    </div>
+  </span>
+</div>

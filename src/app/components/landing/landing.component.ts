@@ -27,6 +27,11 @@ export class LandingComponent {
     this.getScreenSize();
   }
 
+  goToLogin() {
+    console.log('goToLogin');
+    this.router.navigate(['/auth/login']);
+  }
+
   handleGetStarted(){
     this.router.navigate(["/auth/signup"]);
   }
