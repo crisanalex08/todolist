@@ -7,9 +7,12 @@ import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { AuthService } from 'src/app/services/auth.service';
 
-const googleLogoURL = 'http://localhost:4200/assets/images/svg/google.svg';
-const facebookLogoURL = 'http://localhost:4200/assets/images/svg/facebook.svg';
-const twitterLogoURL = 'http://localhost:4200/assets/images/svg/twitter.svg';
+const googleLogoURL =
+  'https://raw.githubusercontent.com/crisanalex08/todolist/main/src/assets/images/svg/google.svg';
+const facebookLogoURL =
+  'https://raw.githubusercontent.com/crisanalex08/todolist/main/src/assets/images/svg/facebook.svg';
+const twitterLogoURL =
+  'https://raw.githubusercontent.com/crisanalex08/todolist/main/src/assets/images/svg/twitter.svg ';
 
 @Component({
   selector: 'app-signup',

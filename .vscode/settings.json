@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/49c534f2-5b04-41c9-bab0-7d94bed06bb9/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Web/sites/todolistWAD",
+    "appService.deploySubpath": "dist\\todolist"
+}

@@ -20,10 +20,11 @@ export class TasksService {
   constructor(private http: HttpClient) {
     this.userId = localStorage.getItem('userId');
   }
-
+  baseUrl = 'https://todolistapi20231114144623.azurewebsites.net';
+  // baseUrl = 'https://localhost:7260';
   getTasks(take: number) {
     return this.http.get<TodoTask[]>(
-      `https://localhost:7260/api/Tasks/${localStorage.getItem(
+      `${this.baseUrl}/api/Tasks/${localStorage.getItem(
         'userId'
       )}/${take}`
     );
@@ -193,7 +194,7 @@ export class TasksService {
       userId: localStorage.getItem('userId'),
     };
     const taskData = JSON.stringify(task);
-    const url = `https://localhost:7260/api/Tasks/add_task`;
+    const url = `${this.baseUrl}/api/Tasks/add_task`;
 
     return this.http.post(url, task, {
       headers: {
@@ -227,7 +228,7 @@ export class TasksService {
     };
 
     const taskData = JSON.stringify(task);
-    const url = `https://localhost:7260/api/Tasks/edit_task`;
+    const url = `${this.baseUrl}/api/Tasks/edit_task`;
     return this.http.put(url, task, {
       headers: {
         'Content-Type': 'application/json', // Set the content type to JSON
@@ -239,7 +240,7 @@ export class TasksService {
     this.taskList = this.taskList.filter((task) => task.id !== id);
 
     return this.http
-      .delete(`https://localhost:7260/api/Tasks/delete_task/${id}`)
+      .delete(`${this.baseUrl}/api/Tasks/delete_task/${id}`)
       .subscribe(() => {
         this.taskList.splice(
           this.taskList.findIndex((task) => task.id === id),

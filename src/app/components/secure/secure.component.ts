@@ -39,10 +39,10 @@ export class SecureComponent implements OnInit {
 
   onLogOut() {
     this.auth.logOut();
-    this.router.navigateByUrl(`/login`);
+    this.router.navigateByUrl(`/auth/login`);
   }
 
   onAdminPanel() {
-    this.router.navigateByUrl(`/admin`);
+    this.router.navigateByUrl(`/secure/admin`);
   }
 }

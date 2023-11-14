@@ -10,7 +10,8 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  baseUrl = 'https://localhost:7260';
+  // baseUrl = 'https://localhost:7260';
+  baseUrl = 'https://todolistapi20231114144623.azurewebsites.net';
   public async registerUser(name: string | null, email: string | null, password: string | null): Promise<void> {
     this.http.get<string>(`${this.baseUrl}/register${name}/${email}/${password}`).subscribe(
       (d: string) => {
