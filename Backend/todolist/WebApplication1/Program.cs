@@ -1,8 +1,5 @@
-using TodoList.Configuration;
-using TodoList.Services;
-using AutoMapper;
-using System.Reflection;
 using Microsoft.OpenApi.Models;
+using TodoList.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,15 +31,15 @@ builder.Services.AddCors(o =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
   app.UseSwagger();
   app.UseSwaggerUI(c =>
   {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
   });
   app.UseSwaggerUI();
-}
+//}
 
 app.UseCors("AllowAll");
 

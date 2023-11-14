@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2sGKEs3B9EmRMEDqrgWfMAAAAAACAAAAAAAQZgAAAAEAACAAAADk7yCKsCvILjJ/wj82jU9trP2LzaFhAHouzfsz3is5VAAAAAAOgAAAAAIAACAAAACZTdWL3/3rfIy5Oa7R3UNBLveDfr341DYw+uLKDJ9jYYAAAABOSols8cqcQRoJIWCS+hsA8tHI3d/dOg5peRURC7d+WJ6BQXyhOFlKmLkrR/CYdfgplOCTpwEk7USvHL+OqBbsjLqytOlD5w10wLZUPQdLsqlwQnf9K0xFCyf1Q7OuYJe9RGOztNlu9w9iNzMSJkEsieGB4UM93llGBf2DQ4kVzEAAAAD+6CjREv5FJ/mRI3wTnpWEPv+HlhRt/bH58l4XWQ3mkoMpX9MOconNnlwmrTOk05vZGQmUjNVMqSnzZD+HTZ2e</EncryptedPassword>
+    <History>False|2023-11-13T12:18:49.5725664Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="TodoList.Data.TodolistContext">
+      <Value>
+      </Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
